@@ -9,21 +9,50 @@ const crypto = require('crypto');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const ROOT = path.join(__dirname, '..');
-const DATA_FILE = path.join(__dirname, 'data.json');
-const ADMIN_FILE = path.join(__dirname, 'admin.json');
+
+function getFilePath(filename) {
+  const localPath = path.resolve(__dirname, filename);
+  if (fs.existsSync(localPath)) return localPath;
+  const cwdPath = path.resolve(process.cwd(), 'backend', filename);
+  if (fs.existsSync(cwdPath)) return cwdPath;
+  return localPath;
+}
+
+const DATA_FILE = getFilePath('data.json');
+const ADMIN_FILE = getFilePath('admin.json');
 const JWT_SECRET = process.env.JWT_SECRET || 'berugram-change-this-secret-before-production';
 
 app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: true, credentials: true }));
 
+let cachedData = null;
+
 function readJSON(file, fallback) {
-  try { return JSON.parse(fs.readFileSync(file, 'utf8')); }
-  catch { return fallback; }
+  try {
+    const raw = fs.readFileSync(file, 'utf8');
+    return JSON.parse(raw);
+  } catch (err) {
+    console.error(`[server] Failed to read or parse ${file}:`, err.message);
+    return fallback;
+  }
 }
-function writeJSON(file, data) { fs.writeFileSync(file, JSON.stringify(data, null, 2), 'utf8'); }
-function readData() { return readJSON(DATA_FILE, {}); }
-function writeData(data) { writeJSON(DATA_FILE, data); }
+function writeJSON(file, data) {
+  try {
+    fs.writeFileSync(file, JSON.stringify(data, null, 2), 'utf8');
+  } catch (err) {
+    console.warn(`[server] Warning: Could not write ${file} to disk:`, err.message);
+  }
+}
+function readData() {
+  if (cachedData) return cachedData;
+  cachedData = readJSON(DATA_FILE, {});
+  return cachedData;
+}
+function writeData(data) {
+  cachedData = data;
+  writeJSON(DATA_FILE, data);
+}
 
 function makePasswordHash(password) {
   const salt = crypto.randomBytes(16).toString('hex');
@@ -38,13 +67,15 @@ function verifyPassword(password, stored) {
   } catch { return false; }
 }
 function getAdmin() {
-  if (!fs.existsSync(ADMIN_FILE)) {
+  const adminFile = getFilePath('admin.json');
+  if (!fs.existsSync(adminFile)) {
     const admin = { username: process.env.ADMIN_USER || 'admin', passwordHash: makePasswordHash(process.env.ADMIN_PASSWORD || 'Headmaster@123') };
-    writeJSON(ADMIN_FILE, admin);
+    writeJSON(adminFile, admin);
+    return admin;
   }
-  return readJSON(ADMIN_FILE, { username: 'admin', passwordHash: makePasswordHash('Headmaster@123') });
+  return readJSON(adminFile, { username: 'admin', passwordHash: makePasswordHash('Headmaster@123') });
 }
-function saveAdmin(admin) { writeJSON(ADMIN_FILE, admin); }
+function saveAdmin(admin) { writeJSON(getFilePath('admin.json'), admin); }
 
 function auth(req, res, next) {
   const token = req.headers.authorization?.replace(/^Bearer\s+/i, '');
@@ -56,7 +87,14 @@ function auth(req, res, next) {
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     const kind = req.body.kind === 'notice' ? 'notices' : 'images';
-    cb(null, path.join(ROOT, kind));
+    let destDir = path.join(ROOT, kind);
+    try {
+      if (!fs.existsSync(destDir)) fs.mkdirSync(destDir, { recursive: true });
+    } catch {
+      destDir = path.join('/tmp', kind);
+      if (!fs.existsSync(destDir)) fs.mkdirSync(destDir, { recursive: true });
+    }
+    cb(null, destDir);
   },
   filename: (req, file, cb) => {
     const ext = path.extname(file.originalname).toLowerCase();
@@ -113,10 +151,15 @@ app.post('/api/admin/upload', auth, upload.single('file'), (req, res) => {
 app.get('/api/admin/media', auth, (req, res) => {
   const imagesDir = path.join(ROOT, 'images');
   const noticesDir = path.join(ROOT, 'notices');
-  const readFolder = (dir, folder) => fs.readdirSync(dir, { withFileTypes: true }).filter(x => x.isFile()).map(x => {
-    const p = path.join(dir, x.name); const st = fs.statSync(p);
-    return { path: `${folder}/${x.name}`, name: x.name, size: st.size, modified: st.mtime.toISOString() };
-  });
+  const readFolder = (dir, folder) => {
+    if (!fs.existsSync(dir)) return [];
+    try {
+      return fs.readdirSync(dir, { withFileTypes: true }).filter(x => x.isFile()).map(x => {
+        const p = path.join(dir, x.name); const st = fs.statSync(p);
+        return { path: `${folder}/${x.name}`, name: x.name, size: st.size, modified: st.mtime.toISOString() };
+      });
+    } catch { return []; }
+  };
   res.json({ images: readFolder(imagesDir, 'images'), notices: readFolder(noticesDir, 'notices') });
 });
 app.delete('/api/admin/media', auth, (req, res) => {
@@ -124,7 +167,11 @@ app.delete('/api/admin/media', auth, (req, res) => {
   if (!/^(images|notices)\/[a-zA-Z0-9._-]+$/.test(rel)) return res.status(400).json({ error: 'Invalid media path.' });
   const target = path.resolve(ROOT, rel);
   if (!target.startsWith(path.resolve(ROOT) + path.sep)) return res.status(400).json({ error: 'Invalid path.' });
-  if (fs.existsSync(target)) fs.unlinkSync(target);
+  try {
+    if (fs.existsSync(target)) fs.unlinkSync(target);
+  } catch (e) {
+    console.warn('[server] Could not delete file:', e.message);
+  }
   res.json({ ok: true });
 });
 
@@ -135,4 +182,9 @@ app.get(/.*/, (req, res) => res.sendFile(path.join(ROOT, 'index.html')));
 app.use((err, req, res, next) => { console.error(err); res.status(400).json({ error: err.message || 'Server error' }); });
 
 getAdmin();
-app.listen(PORT, () => console.log(`Berugram school website running at http://localhost:${PORT}`));
+
+if (require.main === module) {
+  app.listen(PORT, () => console.log(`Berugram school website running at http://localhost:${PORT}`));
+}
+
+module.exports = app;
