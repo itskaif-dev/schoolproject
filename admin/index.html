@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Berugram Admin Panel</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div id="loginView" class="auth">
+  <div class="login-card">
+    <div class="brand"><img src="../images/logo.png"><div><h1>Berugram Admin</h1><p>School Website Management</p></div></div>
+    <form id="loginForm">
+      <label>Admin Username<input id="username" value="admin" autocomplete="username" required></label>
+      <label>Admin Password<input id="password" type="password" placeholder="Enter admin password" autocomplete="current-password" required></label>
+      <button class="login-btn">Sign In to Dashboard <span>→</span></button>
+      <p id="loginError" class="error"></p>
+    </form>
+    <small>Authorized admin access only</small>
+  </div>
+</div>
+
+<div id="app" class="hidden">
+<aside>
+  <div class="side-brand"><img src="../images/logo.png"><div><b>BERUGRAM</b><small>ADMIN PANEL</small></div></div>
+  <div class="nav-scroll">
+    <button class="nav active" data-tab="overview">⌂ <span>Dashboard</span></button>
+    <button class="nav" data-tab="settings">⚙ <span>Site Settings</span></button>
+    <button class="nav" data-tab="home">▣ <span>Home Page</span></button>
+    <button class="nav" data-tab="about">▤ <span>About & TIC</span></button>
+    <button class="nav" data-tab="academics">▦ <span>Academics</span></button>
+    <button class="nav" data-tab="facilities">⌘ <span>Facilities</span></button>
+    <button class="nav" data-tab="teachers">♙ <span>Teachers & Staff</span></button>
+    <button class="nav" data-tab="notices">▤ <span>Notices</span></button>
+    <button class="nav" data-tab="events">★ <span>Events</span></button>
+    <button class="nav" data-tab="gallery">▧ <span>Gallery</span></button>
+    <button class="nav" data-tab="media">◉ <span>Media Library</span></button>
+    <button class="nav" data-tab="security">🔒 <span>Login & Security</span></button>
+    <button class="nav" data-tab="advanced">{ } <span>Backup / Advanced</span></button>
+  </div>
+  <div class="side-bottom"><a href="/" target="_blank">View Website ↗</a><button id="logout">Logout</button></div>
+</aside>
+<main>
+<header><div><h2 id="pageTitle">Dashboard</h2><p id="pageSubtitle">Manage your school website without touching code.</p></div><div class="header-user"><span id="adminName"></span><span id="saveStatus"></span></div></header>
+
+<section id="overview" class="tab">
+  <div class="cards"><div class="card"><b id="heroCount">0</b><span>Home Slides</span></div><div class="card"><b id="teacherCount">0</b><span>Teachers / Staff</span></div><div class="card"><b id="noticeCount">0</b><span>Notices</span></div><div class="card"><b id="galleryCount">0</b><span>Gallery Photos</span></div></div>
+  <div class="quick-grid">
+    <button onclick="go('home')"><strong>🏠 Home Page</strong><span>Change hero images, text and school statistics.</span></button>
+    <button onclick="go('teachers')"><strong>👨‍🏫 Teachers & Staff</strong><span>Add, edit, remove teachers and upload photos.</span></button>
+    <button onclick="go('notices')"><strong>📄 Notice Board</strong><span>Upload PDF notices and publish them instantly.</span></button>
+    <button onclick="go('gallery')"><strong>🖼️ Gallery</strong><span>Upload JPG/PNG photos and manage categories.</span></button>
+  </div>
+  <div class="panel"><h3>How this panel works</h3><p class="hint">You no longer need to edit JSON. Use the forms, upload your files and press Save. The public website reads the latest saved data automatically.</p><div class="tips"><span>1. Edit a field</span><span>2. Upload JPG/PDF if needed</span><span>3. Click Save</span><span>4. Open website to check</span></div></div>
+</section>
+
+<section id="settings" class="tab hidden"><div class="panel"><div class="panel-head"><div><h3>School & Contact Details</h3><p class="hint">Everything shown in the header, contact section and footer.</p></div><button class="primary" onclick="saveSettings()">Save Settings</button></div><div class="form-grid" id="settingsForm"></div></div></section>
+
+<section id="home" class="tab hidden"><div id="heroEditor"></div><button class="secondary add" onclick="addHero()">+ Add Hero Slide</button><div class="panel"><div class="panel-head"><div><h3>School at a Glance</h3><p class="hint">Add or change the statistics shown below the home banner.</p></div><button class="primary" onclick="saveHome()">Save Home Page</button></div><div id="statsEditor" class="repeat-grid"></div><button class="secondary add" onclick="addStat()">+ Add Statistic</button></div><div class="panel"><div class="panel-head"><h3>Latest Notice Ticker</h3><button class="primary" onclick="saveHome()">Save</button></div><div id="tickerEditor"></div></div></section>
+
+<section id="about" class="tab hidden"><div class="panel"><div class="panel-head"><div><h3>About School</h3><p class="hint">Edit the About section and upload its image.</p></div><button class="primary" onclick="saveAbout()">Save About</button></div><div id="aboutEditor"></div></div><div class="panel"><div class="panel-head"><div><h3>Teacher-in-Charge / Headmaster Message</h3><p class="hint">Change name, designation, qualification, photo and message.</p></div><button class="primary" onclick="saveAbout()">Save TIC</button></div><div id="ticEditor"></div></div></section>
+
+<section id="academics" class="tab hidden"><div class="panel"><div class="panel-head"><div><h3>Academic Programmes</h3><p class="hint">Add classes, stream, subjects or description.</p></div><button class="primary" onclick="saveAcademics()">Save Academics</button></div><div id="academicsEditor"></div><button class="secondary add" onclick="addAcademic()">+ Add Academic Programme</button></div></section>
+<section id="facilities" class="tab hidden"><div class="panel"><div class="panel-head"><div><h3>Facilities</h3><p class="hint">Edit library, laboratory, toilets, drinking water and more.</p></div><button class="primary" onclick="saveFacilities()">Save Facilities</button></div><div id="facilitiesEditor" class="repeat-grid"></div><button class="secondary add" onclick="addFacility()">+ Add Facility</button></div></section>
+
+<section id="teachers" class="tab hidden"><div class="panel"><div class="panel-head"><div><h3>Teachers & Staff</h3><p class="hint">Add/edit teacher name, faculty/subject, qualification, group and optional photo. No code required.</p></div><button class="primary" onclick="saveTeachers()">Save Teachers</button></div><div id="teachersEditor"></div><button class="secondary add" onclick="addTeacher()">+ Add Teacher / Staff</button></div></section>
+
+<section id="notices" class="tab hidden"><div class="panel"><div class="panel-head"><div><h3>Notice Board</h3><p class="hint">Upload the notice PDF and fill in its title and description.</p></div><button class="primary" onclick="saveNotices()">Save Notices</button></div><div id="noticesEditor"></div><button class="secondary add" onclick="addNotice()">+ Add Notice</button></div></section>
+
+<section id="events" class="tab hidden"><div class="panel"><div class="panel-head"><div><h3>Events & Activities</h3><p class="hint">Manage the School Life section.</p></div><button class="primary" onclick="saveEvents()">Save Events</button></div><div id="eventsEditor" class="repeat-grid"></div><button class="secondary add" onclick="addEvent()">+ Add Event</button></div></section>
+
+<section id="gallery" class="tab hidden"><div class="panel"><div class="panel-head"><div><h3>Photo Gallery</h3><p class="hint">Upload a JPG/PNG/WEBP image, choose a category and publish it.</p></div><button class="primary" onclick="saveGallery()">Save Gallery</button></div><div id="galleryEditor"></div><button class="secondary add" onclick="addGallery()">+ Add Gallery Photo</button></div></section>
+
+<section id="media" class="tab hidden"><div class="panel"><div class="panel-head"><div><h3>Media Library</h3><p class="hint">All uploaded images and PDF files are listed here. Delete unused files safely.</p></div><button class="secondary" onclick="loadMedia()">Refresh</button></div><div id="mediaList" class="media-list"></div></div></section>
+
+<section id="security" class="tab hidden"><div class="panel security-panel"><div class="panel-head"><div><h3>Login & Security</h3><p class="hint">Change the admin username and password. You will be logged out after saving.</p></div></div><form id="securityForm" class="security-form"><label>Current Password<input id="currentPassword" type="password" required></label><label>New Admin Username<input id="newUsername" minlength="3" required></label><label>New Password<input id="newPassword" type="password" minlength="8" required></label><label>Confirm New Password<input id="confirmPassword" type="password" minlength="8" required></label><button class="primary">Change Login Details</button><p id="securityMsg" class="error"></p></form></div></section>
+
+<section id="advanced" class="tab hidden"><div class="panel"><div class="panel-head"><div><h3>Backup / Restore</h3><p class="hint">For advanced users. Download a backup before making major changes. You normally never need to touch this.</p></div><div><button class="secondary" onclick="downloadBackup()">Download Backup</button><button class="primary" onclick="restoreBackup()">Restore JSON</button></div></div><textarea id="allJson" class="jsonbox huge"></textarea></div></section>
+</main></div>
+<script src="admin.js"></script>
+</body></html>

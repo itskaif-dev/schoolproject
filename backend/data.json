@@ -1,0 +1,401 @@
+{
+  "settings": {
+    "title": "BERUGRAM A.G.C.B VIDYAPITH",
+    "title_bn": "বেড়ুগ্রাম আচার্য গিরিশচন্দ্র বসু বিদ্যাপীঠ",
+    "subtitle": "(H.S)",
+    "phone": "03451 288025",
+    "phone2": "97750 25098",
+    "email": "berugramagcbvidyapith@gmail.com",
+    "address": "Berugram, Jamalpur, Purba Bardhaman, West Bengal – 713408",
+    "facebook": "#",
+    "youtube": "#",
+    "mapQuery": "Berugram A.G.C.B. Vidyapith, Berugram, Jamalpur, Purba Bardhaman, West Bengal",
+    "institutionCode": "04359",
+    "udiseCode": "19250801003",
+    "hsCode": "104359",
+    "footer": "Established in 1951, Berugram A.G.C.B. Vidyapith is a Government Sponsored Higher Secondary School dedicated to quality education and holistic development."
+  },
+  "hero": [
+    {
+      "image": "images/hero1.jpg",
+      "established": "ESTABLISHED • 1951",
+      "title": "BERUGRAM A.G.C.B<br>VIDYAPITH (H.S)",
+      "subtitle": "শিক্ষায় আলোকিত, মূল্যবোধে সমৃদ্ধ",
+      "text": "১৯৫১ সালে প্রতিষ্ঠিত বেড়ুগ্রাম আচার্য গিরিশচন্দ্র বসু বিদ্যাপীঠ একটি সরকারি পোষিত উচ্চমাধ্যমিক বিদ্যালয়। শিক্ষার পাশাপাশি শৃঙ্খলা, নৈতিকতা ও মূল্যবোধের মাধ্যমে শিক্ষার্থীদের উজ্জ্বল ভবিষ্যৎ গড়ে তোলাই আমাদের প্রধান লক্ষ্য।"
+    },
+    {
+      "image": "images/hero2.jpg",
+      "established": "ESTABLISHED • 1951",
+      "title": "BERUGRAM A.G.C.B<br>VIDYAPITH (H.S)",
+      "subtitle": "শিক্ষায় আলোকিত, মূল্যবোধে সমৃদ্ধ",
+      "text": "A school committed to academic excellence, discipline and holistic development."
+    },
+    {
+      "image": "images/hero3.jpg",
+      "established": "ESTABLISHED • 1951",
+      "title": "OUR SCHOOL CAMPUS",
+      "subtitle": "Learning • Discipline • Values",
+      "text": "A supportive environment for students to learn and grow."
+    },
+    {
+      "image": "images/hero4.jpg",
+      "established": "ESTABLISHED • 1951",
+      "title": "OUR DEDICATED TEAM",
+      "subtitle": "Teachers who shape futures",
+      "text": "Our teachers are committed to every learner."
+    },
+    {
+      "image": "images/hero5.jpg",
+      "established": "ESTABLISHED • 1951",
+      "title": "SCHOOL EVENTS",
+      "subtitle": "Learning beyond classrooms",
+      "text": "Celebrating participation, creativity and community."
+    },
+    {
+      "image": "images/hero6.jpg",
+      "established": "ESTABLISHED • 1951",
+      "title": "OUR STUDENTS",
+      "subtitle": "Dream • Learn • Achieve",
+      "text": "Nurturing confident and responsible citizens."
+    }
+  ],
+  "stats": [
+    {
+      "icon": "fa-calendar-days",
+      "value": "1951",
+      "label": "Established"
+    },
+    {
+      "icon": "fa-user-graduate",
+      "value": "650+",
+      "label": "Students"
+    },
+    {
+      "icon": "fa-chalkboard-user",
+      "value": "17+",
+      "label": "Teachers"
+    },
+    {
+      "icon": "fa-school",
+      "value": "V – XII",
+      "label": "Classes"
+    },
+    {
+      "icon": "fa-door-open",
+      "value": "17+",
+      "label": "Classrooms"
+    }
+  ],
+  "about": {
+    "label": "ABOUT OUR SCHOOL",
+    "heading": "Building Knowledge,<br>Character & Future",
+    "paragraphs": [
+      "Berugram A.G.C.B Vidyapith (H.S) was established in 1951 and is a Government Sponsored Higher Secondary School.",
+      "Our institution believes that education is not limited to textbooks and examinations. We aim to develop knowledge, discipline, integrity, creativity and strong moral values among our students."
+    ],
+    "points": [
+      "Quality Education",
+      "Discipline & Values",
+      "Holistic Development",
+      "Inclusive Learning"
+    ],
+    "image": "images/hero1.jpg",
+    "badge": "73+",
+    "badgeText": "Years of Educational Heritage"
+  },
+  "tic": {
+    "image": "images/tic.png",
+    "name": "JANARDHAN GHOSH",
+    "role": "Teacher-in-Charge (TIC)",
+    "degree": "M.A, B.A (Geography), B.Ed",
+    "heading": "Welcome to Our School",
+    "paragraphs": [
+      "It is my great pleasure to welcome you to the official website of Berugram A.G.C.B. Vidyapith.",
+      "Established in 1951, our institution has a long-standing tradition of academic excellence, discipline, integrity and holistic development.",
+      "We believe that true education goes beyond textbooks and examinations. It is about nurturing responsible, confident, compassionate and capable individuals who can contribute meaningfully to society.",
+      "Our dedicated team of teachers is committed to providing every student with a supportive and inclusive learning environment where curiosity is encouraged, talents are nurtured and potential is transformed into achievement."
+    ]
+  },
+  "academics": [
+    {
+      "icon": "fa-book-open",
+      "title": "Secondary Level",
+      "classes": "Classes IX – X",
+      "stream": "",
+      "subjects": [
+        "বাংলা",
+        "ইংরেজি",
+        "সংস্কৃত",
+        "গণিত",
+        "ভৌত বিজ্ঞান ও পরিবেশ",
+        "জীবন বিজ্ঞান ও পরিবেশ",
+        "ইতিহাস ও পরিবেশ",
+        "ভূগোল ও পরিবেশ",
+        "স্বাস্থ্য ও শারীরশিক্ষা"
+      ]
+    },
+    {
+      "icon": "fa-graduation-cap",
+      "title": "Higher Secondary",
+      "classes": "Classes XI – XII",
+      "stream": "Arts Stream",
+      "subjects": [
+        "বাংলা",
+        "ইংরেজি",
+        "ইতিহাস",
+        "ভূগোল",
+        "রাষ্ট্রবিজ্ঞান",
+        "দর্শন",
+        "সংস্কৃত",
+        "Environmental Science"
+      ]
+    },
+    {
+      "icon": "fa-school",
+      "title": "School Classes",
+      "classes": "Classes V – XII",
+      "stream": "",
+      "description": "The school provides education from Class V to Class XII in Bengali medium, following the applicable board curriculum."
+    }
+  ],
+  "facilities": [
+    {
+      "icon": "fa-book",
+      "title": "Library",
+      "description": "School Library",
+      "value": "01"
+    },
+    {
+      "icon": "fa-computer",
+      "title": "Computer Laboratory",
+      "description": "Computer Laboratory",
+      "value": "01"
+    },
+    {
+      "icon": "fa-display",
+      "title": "Smart Classroom",
+      "description": "Smart Classroom",
+      "value": "01"
+    },
+    {
+      "icon": "fa-droplet",
+      "title": "Drinking Water",
+      "description": "Available",
+      "value": "✓"
+    },
+    {
+      "icon": "fa-restroom",
+      "title": "Girls' Toilet",
+      "description": "Available",
+      "value": "04"
+    },
+    {
+      "icon": "fa-restroom",
+      "title": "Boys' Toilet",
+      "description": "Available",
+      "value": "04"
+    },
+    {
+      "icon": "fa-bolt",
+      "title": "Electricity",
+      "description": "Available",
+      "value": "✓"
+    },
+    {
+      "icon": "fa-building",
+      "title": "Classrooms",
+      "description": "Main classrooms and additional rooms",
+      "value": "17+"
+    }
+  ],
+  "teachers": [
+    {
+      "group": "Assistant Teachers / Teaching Staff",
+      "name": "Sk Nur Ali",
+      "degree": "M.A. (English), B.Ed."
+    },
+    {
+      "group": "Assistant Teachers / Teaching Staff",
+      "name": "Ayandendu Bishayi",
+      "degree": "M.Sc. (Physics), B.Ed."
+    },
+    {
+      "group": "Assistant Teachers / Teaching Staff",
+      "name": "Joysing Murmu",
+      "degree": "B.Sc. (Life Science), B.Ed."
+    },
+    {
+      "group": "Assistant Teachers / Teaching Staff",
+      "name": "Debasish Malik",
+      "degree": "M.Sc. (Mathematics), B.Ed."
+    },
+    {
+      "group": "Assistant Teachers / Teaching Staff",
+      "name": "Biplob Ghosh",
+      "degree": "M.A. (Bengali), B.Ed."
+    },
+    {
+      "group": "Assistant Teachers / Teaching Staff",
+      "name": "Amit Kumar Dalal",
+      "degree": "M.A. (Political Science), B.Ed."
+    },
+    {
+      "group": "Assistant Teachers / Teaching Staff",
+      "name": "Manjushree Maiti",
+      "degree": "M.A. (Philosophy), B.Ed."
+    },
+    {
+      "group": "Assistant Teachers / Teaching Staff",
+      "name": "Subhendu Bain",
+      "degree": "M.A. (Bengali), B.Ed."
+    },
+    {
+      "group": "Assistant Teachers / Teaching Staff",
+      "name": "Mangal Murmu",
+      "degree": "B.A., B.P.Ed."
+    },
+    {
+      "group": "Assistant Teachers / Teaching Staff",
+      "name": "Bappa Ghosh",
+      "degree": "M.A. (History), B.Ed."
+    },
+    {
+      "group": "Para Teachers / Teaching Staff",
+      "name": "Mohammad. Hossain Dewan",
+      "degree": "B.Sc. (Hons.), B.Ed."
+    },
+    {
+      "group": "Para Teachers / Teaching Staff",
+      "name": "Soma Haldar",
+      "degree": "M.A. (Hons.) in English, D.El.Ed."
+    },
+    {
+      "group": "Para Teachers / Teaching Staff",
+      "name": "Suparna Mitra",
+      "degree": "B.A. (Hons.) in History, D.El.Ed."
+    },
+    {
+      "group": "Para Teachers / Teaching Staff",
+      "name": "Kohinoor Khatun",
+      "degree": "B.A., D.El.Ed."
+    },
+    {
+      "group": "Para Teachers / Teaching Staff",
+      "name": "Atun Hazra",
+      "degree": "M.A. (Political Science), D.El.Ed."
+    },
+    {
+      "group": "Computer Teacher",
+      "name": "Sabir Ahmed Khan",
+      "degree": "Diploma in Computer"
+    },
+    {
+      "group": "Guest Teacher",
+      "name": "Rubina Khatun",
+      "degree": "M.A., B.Ed. (Sanskrit)"
+    }
+  ],
+  "notices": [
+    {
+      "title": "Parents' Meeting Notice",
+      "description": "Important notice regarding parents' meeting.",
+      "date": "SCHOOL NOTICE",
+      "file": "notices/parents-meeting.pdf"
+    },
+    {
+      "title": "Regular Classes Notice",
+      "description": "Important information regarding regular classes.",
+      "date": "SCHOOL NOTICE",
+      "file": "notices/regular-classes.pdf"
+    }
+  ],
+  "events": [
+    {
+      "icon": "fa-person-running",
+      "title": "Sports",
+      "description": "Sports and physical activities"
+    },
+    {
+      "icon": "fa-flag",
+      "title": "National Events",
+      "description": "Independence Day, Republic Day and other activities"
+    },
+    {
+      "icon": "fa-masks-theater",
+      "title": "Cultural Activities",
+      "description": "Cultural programmes and student participation"
+    },
+    {
+      "icon": "fa-people-group",
+      "title": "School Programmes",
+      "description": "Various educational and community activities"
+    }
+  ],
+  "gallery": [
+    {
+      "image": "images/gallery1.jpg",
+      "category": "campus",
+      "alt": "School Campus"
+    },
+    {
+      "image": "images/gallery2.jpg",
+      "category": "teachers",
+      "alt": "Teachers"
+    },
+    {
+      "image": "images/gallery3.jpg",
+      "category": "events",
+      "alt": "School Event"
+    },
+    {
+      "image": "images/gallery4.jpg",
+      "category": "sports",
+      "alt": "Sports"
+    },
+    {
+      "image": "images/gallery5.jpg",
+      "category": "students",
+      "alt": "Students"
+    },
+    {
+      "image": "images/gallery6.jpg",
+      "category": "events",
+      "alt": "School Activity"
+    },
+    {
+      "image": "images/gallery7.jpg",
+      "category": "students",
+      "alt": "Students Activity"
+    },
+    {
+      "image": "images/gallery8.jpg",
+      "category": "events",
+      "alt": "School Event"
+    },
+    {
+      "image": "images/gallery9.jpg",
+      "category": "sports",
+      "alt": "Sports Event"
+    },
+    {
+      "image": "images/gallery10.jpg",
+      "category": "events",
+      "alt": "School Programme"
+    },
+    {
+      "image": "images/gallery11.jpg",
+      "category": "teachers",
+      "alt": "Teachers and Staff"
+    },
+    {
+      "image": "images/gallery12.jpg",
+      "category": "campus",
+      "alt": "School Campus"
+    }
+  ],
+  "ticker": [
+    "Parents' Meeting Notice",
+    "Regular Classes Notice",
+    "Welcome to the official website of Berugram A.G.C.B Vidyapith"
+  ]
+}
